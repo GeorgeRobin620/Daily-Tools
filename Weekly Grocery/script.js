@@ -8,7 +8,7 @@ const clearBtn = document.querySelector(".clear-btn");
 
 let editOption = false;
 
-form.addEventListener('submit', addItem, false);
+groceryForm.addEventListener('submit', addItem, false);
 
 function addItem(event){
   event.preventDefault();
@@ -46,16 +46,29 @@ function createListItem(id, value){
                 </div>
               `;
   groceryList.appendChild(article);
-  const editBtn = document.querySelector(".edit-btn");
+  const editBtn = article.querySelector(".edit-btn");
   editBtn.addEventListener("click", editItem);
 
-  const deleteBtn = document.querySelector("delete-btn");
+  const deleteBtn = article.querySelector(".delete-btn");
   deleteBtn.addEventListener("click", deleteItem);
 
 }
-
+function editItem(event){
+  let itemToBeEdited = event.currentTarget.parentElement.parentElement;
+  
+}
+function deleteItem(event){
+  let itemToBeDeleted = event.currentTarget.parentElement.parentElement;
+  groceryList.removeChild(itemToBeDeleted);
+  displayMessage("Item is removed.", "success");
+}
 function displayMessage(message, type){
-  alert.innerHTML = `<p class="alert-${type}">${Message}</p>`
+  alert.innerHTML = `<p class="alert-${type}">${message}</p>`;
+  //removing this message after 1000 ms.
+  setTimeout(()=>{
+    alert.textContent="";
+    alert.classList.remove(`alert-${type}`)
+  },1000)
 }
 function addToLocalStorage(id, value){
 
