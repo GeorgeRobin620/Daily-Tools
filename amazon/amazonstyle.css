@@ -1,0 +1,264 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Roboto;
+}
+.navbar{
+    height:60px;
+    color:#fff;
+    background-color: #0f1111;
+    display:flex;
+    align-items:center;
+    justify-content: space-evenly;
+}
+.logo{
+    background-image: url("./images/download.png");
+    background-size: cover;
+    background-position: 0 0;
+    width:100px;
+    height:50px;
+}
+/* logo css ends */
+.address-one, .nav-signin, .orders{
+    font-size: 0.75rem;
+    color: #cccccc;
+    margin-left: 15px;
+}
+.add-icon{
+    display: flex;
+    align-items: center;
+    border: 2px solid orange;
+}
+.address-country{
+    margin-left: 2px;
+}
+/* address css ends */
+.nav-search{
+    display: flex;
+    align-items: center;
+    width: 60vw;
+    height: 40px;
+}
+.search-select{
+    background-color: #f3f3f3;
+    width: 45px;
+    height: 100%;
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.search-input{
+    width:100%;
+    font-size: 1.2rem;
+    height: 100%;
+    padding-left: 5px;
+}
+.search-icon{
+    background-color: orange;
+    height: 100%;
+    width: 45px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* search input css ends */
+.nav-flag{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 30px;
+}
+.country-flag{
+    background-image: url(./images/india.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 40px;
+}
+/* flag section css ends */
+.nav-signin .accounts,
+.nav-return-orders{
+    font-size: 1rem;
+    color: #fff;
+    font-weight: 700;
+}
+/* Return section css ends */
+.nav-cart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav-cart i { 
+    font-weight: 700;
+    font-size: 2rem;
+}
+/* Cart section css ends here */
+.border{
+    border: none;
+}
+.border:hover{
+    border: 1px solid white;
+}
+.nav-search:hover{
+    border: 2px solid orange;
+}
+/* nav bar ends here */
+.panel{
+    background-color: #222f3d;
+    height: 40px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.sub-panel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.panel-all{
+    display: flex;
+    justify-content: center;
+    margin-left: 10px;
+}
+.panel-all i{
+    margin-right: 5px;
+}
+.panel-options ul{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.panel-options a{
+    text-decoration: none;
+    color:white;
+    margin: 10px;
+}
+.panel-options li{
+    list-style-type: none;
+}
+.shop-deals{
+    margin-right: 40px;
+    font-weight: 700;
+}
+/* panel ends here */
+.banner{
+    height: 350px;
+    background-image: url("./images/mainsection_hero_.jpg");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.banner-msg{
+    background-color: #f5f6f6;
+    height: 40px;
+    width: 80%;
+    line-height: 40px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.banner-msg a{
+    color: #007185;
+}
+.shop-section{
+    height: 850px;
+    background-color: rgb(210, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.card{
+    height: 400px;
+    width: 22%;
+    background-color: white;
+    padding: 10px 0;
+}
+.card-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    margin-right: 20px;
+    margin-left: 20px;
+
+}
+.card-img1{
+    background-image: url("./images/health.jpg");
+    height: 80%;
+    width: 100%;
+}
+.card-img2{
+    background-image: url("./images/dealsPC.jpg");
+    height: 80%;
+    width: 100%;
+}
+.card-img3{
+    background-image: url("./images/gaming.jpg");
+    height: 80%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.card-img4{
+    background-image: url("./images/newyear.jpg");
+    height: 80%;
+    width: 100%;
+}
+.card-img5{
+    background-image: url("./images/health.jpg");
+    height: 80%;
+    width: 100%;
+}
+.card-img6{
+    background-image: url("./images/health.jpg");
+    height: 80%;
+    width: 100%;
+}
+/* shop section ends here */
+footer{
+    margin-top: 20px;
+}
+.footer-panel1{
+    background-color: #37475a;
+    text-align:center;
+    height: 40px;
+    line-height: 40px;
+    color: white;
+}
+.footer-panel2{
+    background-color: #222f3d;
+    color: #dddddd;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    height: 30vmin;
+    border-bottom: 0.2px solid white;
+}
+.footer-panel2 ul{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    padding-top: 20px;
+}
+.footer-panel2 ul a{
+    color: white;
+    text-decoration: none;
+
+}
+.footer-panel3{
+    background-color: #222f3d;
+    height: 20vmin;
+    width: 100%;
+    /* border: 2px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: larger;
+}
