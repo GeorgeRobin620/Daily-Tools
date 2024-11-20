@@ -1,12 +1,16 @@
 const groceryForm = document.querySelector(".grocery-form");
 const alert = document.querySelector(".alert");
 const grocery = document.querySelector("#grocery");
-const submit = document.querySelector(".submit");
+const submit = document.querySelector(".submit-btn");
 const groceryContainter = document.querySelector(".grocery-container");
 const groceryList = document.querySelector(".grocery-list");
 const clearBtn = document.querySelector(".clear-btn");
 
+//Edit button variables
 let editOption = false;
+let editArticleId = "";
+let editElement;
+
 
 groceryForm.addEventListener('submit', addItem, false);
 
@@ -19,8 +23,12 @@ function addItem(event){
     groceryContainter.classList.add("show-container");
     displayMessage("Item added to the list", "sucess");
     addToLocalStorage(id, value);
+    setDefaults();
   }else if(value && editOption){
+    editElement.innerHTML = value;
     displayMessage("item added to the list", "sucess");
+    setDefaults();
+    //console.log(editArticleId);
     addToLocalStorage(id, value);
   }else{
     displayMessage("Please enter a value", "danger");
@@ -55,7 +63,7 @@ function createListItem(id, value){
 }
 function editItem(event){
   let itemToBeEdited = event.currentTarget.parentElement.parentElement;
-  
+  console.log(itemToBeEdited);
 }
 function deleteItem(event){
   let itemToBeDeleted = event.currentTarget.parentElement.parentElement;
@@ -71,7 +79,24 @@ function displayMessage(message, type){
   },1000)
 }
 function addToLocalStorage(id, value){
+  
+}
 
+function editItem(event){
+  editOption = true;
+  let itemToBeEdited = event.currentTarget.parentElement.parentElement;
+  editElement = itemToBeEdited.firstChild;
+  editArticleId = itemToBeEdited.dataset.id;
+  grocery.value = editElement.innerHTML;
+  submit.innerHTML = "edit";
+}
+
+function setDefaults() {
+  grocery.value = "";
+  editOption = false;
+  submit.innerHTML = "submit";
+  editElement = "";
+  editArticleId = "";
 }
 // function addItem(event){
 //     event.preventDefault();
