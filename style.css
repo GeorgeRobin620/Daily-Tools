@@ -1,15 +1,17 @@
 a{
-    display: block;
+    display: inline-block;
     height: 5vh;
     background-color: white;
     padding-top: 2.5vh;
     font-size: 25px;
     margin-top: 2.5vh;
+    margin-left: 5vw;
     border: black solid 3px;
     border-radius: 25px;
     text-decoration: none;
     padding-left: 0.5vw;
     color: black;
+    width: 20vw;
 }
 h1{
     display: flex;
