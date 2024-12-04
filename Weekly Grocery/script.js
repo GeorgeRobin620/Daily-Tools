@@ -2,7 +2,7 @@ const groceryForm = document.querySelector(".grocery-form");
 const alert = document.querySelector(".alert");
 const grocery = document.querySelector("#grocery");
 const submit = document.querySelector(".submit-btn");
-const groceryContainter = document.querySelector(".grocery-container");
+const groceryContainer = document.querySelector(".grocery-container");
 const groceryList = document.querySelector(".grocery-list");
 const clearBtn = document.querySelector(".clear-btn");
 
@@ -13,6 +13,7 @@ let editElement;
 
 
 groceryForm.addEventListener('submit', addItem, false);
+clearBtn.addEventListener('click', clearItems, false);
 
 function addItem(event){
   event.preventDefault();
@@ -20,7 +21,7 @@ function addItem(event){
   let value = grocery.value;
   if(value && !editOption){
     createListItem(id, value);
-    groceryContainter.classList.add("show-container");
+    groceryContainer.classList.add("show-container");
     displayMessage("Item added to the list", "sucess");
     addToLocalStorage(id, value);
     setDefaults();
@@ -97,6 +98,38 @@ function setDefaults() {
   submit.innerHTML = "submit";
   editElement = "";
   editArticleId = "";
+}
+
+function clearItems(){
+  let groceryItems = document.querySelectorAll(".grocery-item");
+
+  console.log(groceryItems);
+  groceryItems.forEach((item) => {
+      groceryList.removeChild(item);
+  });
+  groceryContainer.classList.remove("show-container");
+  displayMessage("Successfully cleared", "success");
+}
+
+function getGroceryList() {
+  return localStorage.getItem("list")
+    ? JSON.parse(localStorage.getItem("list"))
+    : [];
+}
+function setGroceryList(list) {
+  console.log(list);
+  localStorage.setItem("list", JSON.stringify(list));
+}
+
+function addToLocalStorage(id, value) {
+  const lsGroceryItem = { id, value }; //creating an obj
+  let lsgroceryList = getGroceryList(); //getting the existing state of LS , your complete items or []
+  lsgroceryList.push(lsGroceryItem); //whatever the state, I am a
+//whatever the state, I am adding my item to the list
+  setGroceryList(lsgroceryList); //send this list back to LS
+
+  //add the grocery item either to new one for first time
+  //or to the already existing list
 }
 // function addItem(event){
 //     event.preventDefault();
