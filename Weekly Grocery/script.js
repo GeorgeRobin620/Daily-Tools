@@ -28,9 +28,9 @@ function addItem(event){
   }else if(value && editOption){
     editElement.innerHTML = value;
     displayMessage("item added to the list", "sucess");
+    console.log("Edit Article ID: ", editArticleId);
+    editInLocalStorage(editArticleId, value);
     setDefaults();
-    //console.log(editArticleId);
-    addToLocalStorage(id, value);
   }else{
     displayMessage("Please enter a value", "danger");
   }
@@ -69,8 +69,22 @@ function editItem(event){
 function deleteItem(event){
   let itemToBeDeleted = event.currentTarget.parentElement.parentElement;
   groceryList.removeChild(itemToBeDeleted);
+  console.log(itemToBeDeleted);
   displayMessage("Item is removed.", "success");
+  let deletedId = itemToBeDeleted.dataset.id;
+  removeItemFromStorage(deletedId);
 }
+
+function removeItemFromStorage(id){
+  let lsgroceryList = getGroceryList(); //getting the existing state of LS , your complete items or []
+  lsgroceryList = lsgroceryList.filter((item) => {
+    if (item.id === id) {
+      localStorage.removeItem(item);
+    } else return item;
+  });
+  setGroceryList(lsgroceryList);
+}
+
 function displayMessage(message, type){
   alert.innerHTML = `<p class="alert-${type}">${message}</p>`;
   //removing this message after 1000 ms.
@@ -78,9 +92,6 @@ function displayMessage(message, type){
     alert.textContent="";
     alert.classList.remove(`alert-${type}`)
   },1000)
-}
-function addToLocalStorage(id, value){
-  
 }
 
 function editItem(event){
@@ -109,6 +120,12 @@ function clearItems(){
   });
   groceryContainer.classList.remove("show-container");
   displayMessage("Successfully cleared", "success");
+
+  removeFromStorage();
+}
+
+function removeFromStorage(){
+  localStorage.removeItem("list");
 }
 
 function getGroceryList() {
@@ -130,6 +147,21 @@ function addToLocalStorage(id, value) {
 
   //add the grocery item either to new one for first time
   //or to the already existing list
+}
+
+function editInLocalStorage(id, value) {
+  //for editing , first get the list, then change the value
+  //note you have retain the position of the item.
+  //don't do remove and then set , use map instead
+  let lsGroceryList = getGroceryList();
+
+  lsGroceryList = lsGroceryList.map((item) => {
+    if (item.id === id) {
+      item.value = value;
+    }
+    return item;
+  });
+  setGroceryList(lsGroceryList);
 }
 // function addItem(event){
 //     event.preventDefault();
